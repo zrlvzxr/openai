@@ -11,8 +11,6 @@ final class OpenAIStreamChatCompletionChoiceDeltaModel {
 
   /// The [content] of the message.
   final List<OpenAIChatCompletionChoiceMessageContentItemModel?>? content;
-  final List<OpenAIChatCompletionChoiceMessageContentItemModel?>?
-      reasoningContent;
 
   /// The [toolCalls] of the message.
   final List<OpenAIResponseToolCall>? toolCalls;
@@ -35,7 +33,6 @@ final class OpenAIStreamChatCompletionChoiceDeltaModel {
   const OpenAIStreamChatCompletionChoiceDeltaModel({
     required this.role,
     required this.content,
-    required this.reasoningContent,
     this.toolCalls,
   });
 
@@ -51,11 +48,6 @@ final class OpenAIStreamChatCompletionChoiceDeltaModel {
       content: json['content'] != null
           ? OpenAIMessageDynamicContentFromFieldAdapter.dynamicContentFromField(
               json['content'],
-            )
-          : null,
-      reasoningContent: json['reasoning_content'] != null
-          ? OpenAIMessageDynamicContentFromFieldAdapter.dynamicContentFromField(
-              json['reasoning_content'],
             )
           : null,
       toolCalls: json['tool_calls'] != null
